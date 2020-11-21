@@ -16,13 +16,19 @@ setup(
 
     # Packages in this example are ['cli', 'cli.helpers']
     # We can specify them explicitly, but fortunately we have a special function
+    # You may notice that creating a separate directory for helpers is not particularly necessary
+    # and you can create a file helpers.py directly in the cli directory
+    # this was done specifically to show what happens with two or more packages=
     packages=find_packages(),
 
     # For this example we use external library 'click'
     install_requires=['click'],
 
     # Entry point for app
-    # After installation the app can be run as "console_example <args>"
+    # By default the startup script is installed in '/usr/local/bin' or something like that in other systems
+    # To create startup script in installation dir run './setup.py install --install-scripts .'
+    # after that startup script will be created in the installation directory
+    # and can be run as './console_example <args>"
     entry_points={
         'console_scripts': [
             'console_example=cli:cli.cli'
