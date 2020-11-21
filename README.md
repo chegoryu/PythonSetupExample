@@ -8,13 +8,13 @@ TODO
 
 TODO
 
-###Linux
+### Linux
 TODO
 
-###Mac OS
+### Mac OS
 TODO
 
-###Windows
+### Windows
 
 TODO
 
@@ -30,3 +30,6 @@ TODO
 
 TODO
 
+### Пример с GUI
+
+TODO

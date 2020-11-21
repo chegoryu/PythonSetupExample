@@ -1,4 +1,6 @@
 __pycache__
 build
+console_example
 dist
+scripts
 *.egg-info

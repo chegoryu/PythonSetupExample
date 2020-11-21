@@ -25,7 +25,7 @@ setup(
     # After installation the app can be run as "console_example <args>"
     entry_points={
         'console_scripts': [
-            'console_example=cli:cli'
+            'console_example=cli:cli.cli'
         ],
     }
 )
