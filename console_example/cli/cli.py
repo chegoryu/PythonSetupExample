@@ -18,4 +18,4 @@ def sum(numbers):
 @click.argument('numbers', type=click.INT, nargs=-1)
 @click.option('--reverse', is_flag=True, default=False, help='Reverse result.')
 def sort(numbers, reverse):
-    click.echo(" ".join(map(str, helpers.sort_numbers(numbers, reverse=reverse))))
+    click.echo(' '.join(map(str, helpers.sort_numbers(numbers, reverse=reverse))))

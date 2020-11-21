@@ -28,7 +28,7 @@ setup(
     # By default the startup script is installed in '/usr/local/bin' or something like that in other systems
     # To create startup script in installation dir run './setup.py install --install-scripts .'
     # after that startup script will be created in the installation directory
-    # and can be run as './console_example <args>"
+    # and can be run as './console_example <args>'
     entry_points={
         'console_scripts': [
             'console_example=cli:cli.cli'
