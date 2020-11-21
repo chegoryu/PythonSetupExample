@@ -18,7 +18,7 @@ setup(
     # We can specify them explicitly, but fortunately we have a special function
     # You may notice that creating a separate directory for helpers is not particularly necessary
     # and you can create a file helpers.py directly in the cli directory
-    # this was done specifically to show what happens with two or more packages=
+    # this was done specifically to show what happens with two or more packages
     packages=find_packages(),
 
     # For this example we use external library 'click'
