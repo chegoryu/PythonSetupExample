@@ -16,6 +16,6 @@ def sum(numbers):
 
 @cli.command(name='sort', help='Sort numbers.')
 @click.argument('numbers', type=click.INT, nargs=-1)
-@click.option('--reverse', type=click.BOOL, default=False)
+@click.option('--reverse', is_flag=True, default=False, help='Reverse result.')
 def sort(numbers, reverse):
     click.echo(" ".join(map(str, helpers.sort_numbers(numbers, reverse=reverse))))
