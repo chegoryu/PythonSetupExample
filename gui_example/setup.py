@@ -6,34 +6,31 @@ from setuptools import setup, find_packages
 setup(
     # Some information about the app
     # You can write almost anything here
-    name='console_example',
+    name='gui_example',
     version='1.0',
     url='https://github.com/chegoryu/PythonSetupExample',
     license='MIT',
     author='Egor Chunaev',
     author_email='none@none.com',
-    description='Console example with setuptools',
+    description='GUI example with setuptools',
 
-    # Packages in this example are ['cli', 'cli.helpers']
-    # We can specify them explicitly, but fortunately we have a special function
-    # You may notice that creating a separate directory for helpers is not particularly necessary
-    # and you can create a file helpers.py directly in the cli directory
-    # this was done specifically to show what happens with two or more packages
+    # Packages in this example is ['gui']
+    # We can specify it explicitly, but fortunately we have a special function
     packages=find_packages(),
 
-    # For this example we use external library 'click'
-    install_requires=['click'],
+    # For this example we use external library 'kivy'
+    install_requires=['kivy'],
 
     # Entry point for app
     # By default the startup script is installed in '/usr/local/bin' or something like that in other systems
     # To create startup script in installation dir run './setup.py install --install-scripts .'
     # after that startup script will be created in the installation directory
-    # and can be run as './console_example <args>'
+    # and can be run as './gui_example'
     # But it is recommended to install the scripts in a separate directory './setup.py install --install-scripts ./scripts'
     # because in addition to the main scripts dependency scripts can also be installed
     entry_points={
-        'console_scripts': [
-            'console_example=cli:cli'
+        'gui_scripts': [
+            'gui_example=gui:main'
         ],
     }
 )
