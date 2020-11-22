@@ -58,7 +58,7 @@ Adding Kivy 1.11.1 to easy-install.pth file
 
 Для работы с `setuptools` нам нужно установить менеджер пакетов `pip`.
 
-Для этого уже есть много разных инструкций в интернете, например [инструкция с сайте pipy](https://pip.pypa.io/en/stable/installing).
+Для этого уже есть много разных инструкций в интернете, например [инструкция с сайта pipy](https://pip.pypa.io/en/stable/installing).
 
 При поиске в google первая статься на русском, которая описывает установку для всех систем (Windows/Max OS/Linux) [находится тут](https://pythonru.com/baza-znanij/ustanovka-pip-dlja-python-i-bazovye-komandy).
 
@@ -73,7 +73,12 @@ pip install setuptools
 
 ## Setup.py
 
-TODO
+То, как устанавливать приложение описывается при помощи `setup.py` скрипта.
+В данном репозитории уже написаны два примера - [для консольного приложений](https://github.com/chegoryu/PythonSetupExample/blob/master/console_example/setup.py) и [для приложения с GUI](https://github.com/chegoryu/PythonSetupExample/blob/master/gui_example/setup.py).
+
+Ниже они будут разобраны подробнее.
+
+Для запуска скриптов и приложений ниже показаны примеры команд для `unix` систем, для особенностей работы с `windows` есть отдельный раздел.
 
 ### Как написать
 
