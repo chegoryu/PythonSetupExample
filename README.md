@@ -26,8 +26,8 @@ install_requires=['kivy>=1.11.1', 'click']
 
 ```
 # Обновление kivy с версии 1.11.1 до версии 2.0.0rc4
-# Обновление происходи поскольку мы разрешаем версию >=1.11.1 и при установке ищется максимально возможная версия,
-# которая удовлетворяет ограничениям
+# Обновление происходи поскольку мы разрешаем версию >=1.11.1 и при установке происходит поиск
+# максимально возможной версии, которая удовлетворяет ограничениям
 
 Processing dependencies for gui-example==1.0
 Searching for Kivy==2.0.0rc4
@@ -36,7 +36,7 @@ Processing Kivy-2.0.0rc4-py3.7-macosx-10.12-x86_64.egg
 Removing Kivy 1.11.1 from easy-install.pth file
 Adding Kivy 2.0.0rc4 to easy-install.pth file
 
-# Если бы было указано kivy-=1.11.1, то была бы установленна именно эта версия
+# Если бы было указано kivy==1.11.1, то была бы установленна именно эта версия
 
 Processing dependencies for gui-example==1.0
 Searching for kivy==1.11.1
@@ -50,6 +50,7 @@ Removing Kivy 2.0.0rc4 from easy-install.pth file
 Adding Kivy 1.11.1 to easy-install.pth file
 ```
 
+Поиск пакетов для установки происходит в [pipy](https://pypi.org), в котором уже собрано более 273634 разных проектов.
 
 ## Как установить pip3, setuptools, etc
 
