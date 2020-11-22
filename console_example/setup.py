@@ -29,7 +29,7 @@ setup(
     # To create startup script in installation dir run './setup.py install --install-scripts .'
     # after that startup script will be created in the installation directory
     # and can be run as './console_example <args>'
-    # But it is recommended to install the scripts in a separate directory './setup.py install --install-scripts ./scripts'
+    # But it is recommended to install scripts in a separate directory './setup.py install --install-scripts ./scripts'
     # because in addition to the main scripts dependency scripts can also be installed
     entry_points={
         'console_scripts': [
