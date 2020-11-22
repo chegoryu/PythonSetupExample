@@ -37,7 +37,11 @@ class MainLayout(BoxLayout):
 
 
 class MainApp(App):
-    def build(self):
+    def __init__(self, **kwargs):
+        super(MainApp, self).__init__(**kwargs)
+
         self.title = 'GUI example'
 
+
+    def build(self):
         return MainLayout()
