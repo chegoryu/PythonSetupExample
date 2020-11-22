@@ -19,7 +19,7 @@ setup(
     packages=find_packages(),
 
     # For this example we use external library 'kivy'
-    install_requires=['kivy'],
+    install_requires=['kivy>=1.11.1'],
 
     # Entry point for app
     # By default the startup script is installed in '/usr/local/bin' or something like that in other systems
