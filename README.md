@@ -74,7 +74,7 @@ pip install setuptools
 ## Setup.py
 
 То, как устанавливать приложение описывается при помощи `setup.py` скрипта.
-В данном репозитории уже написаны два примера - [для консольного приложений](https://github.com/chegoryu/PythonSetupExample/blob/master/console_example/setup.py) и [для приложения с GUI](https://github.com/chegoryu/PythonSetupExample/blob/master/gui_example/setup.py).
+В данном репозитории уже написаны два примера - [для консольного приложения](https://github.com/chegoryu/PythonSetupExample/blob/master/console_example/setup.py) и [для приложения с GUI](https://github.com/chegoryu/PythonSetupExample/blob/master/gui_example/setup.py).
 
 Ниже они будут разобраны подробнее.
 
