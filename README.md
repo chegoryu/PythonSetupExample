@@ -71,7 +71,7 @@ pip install setuptools
 Чтобы посмотреть список уже установленных пакетов и их версий, можно воспользоваться `pip list`.
 У `pip` есть ещё много полезных комманд, со всеми можно ознакомиться через `pip -h`.
 
-## Setup.py
+## setup.py
 
 То, как устанавливать приложение описывается при помощи `setup.py` скрипта.
 В данном репозитории уже написаны два примера - [для консольного приложения](https://github.com/chegoryu/PythonSetupExample/blob/master/console_example/setup.py) и [для приложения с GUI](https://github.com/chegoryu/PythonSetupExample/blob/master/gui_example/setup.py).
@@ -86,7 +86,63 @@ pip install setuptools
 
 ### Как написать
 
-TODO
+Рассмотрим пример `setup.py` для [для консольного приложения](https://github.com/chegoryu/PythonSetupExample/blob/master/console_example/setup.py):
+
+```python
+#!/usr/bin/env python3
+
+from setuptools import setup, find_packages
+
+
+setup(
+    # Информация про приложение
+    # В целом тут может быть написано что угодно
+    # Единственные ограничения:
+    #     1. Разумный name на английском языке без пробелов
+    #     2. Версия в специальном формате, но для наших нужд не надо углубляться в детали и можно всегда писать '1.0'
+    name='console_example',
+    version='1.0',
+    url='https://github.com/chegoryu/PythonSetupExample',
+    license='MIT',
+    author='Egor Chunaev',
+    author_email='none@none.com',
+    description='Console example with setuptools',
+
+    # Какие пакеты надо собирать в этом приложении
+    # Например пакеты в этом примере это ['cli', 'cli.helpers']
+    # Можно указать их явно, но, к счастью, есть специальная функция которах их сама находит
+    # Так же можно замети что отделение helpers.py в отдельную директорию кажется избыточным
+    # на самом деле это так и есть и было сделано специально чтобы показать что происходит при
+    # двух и более пакетах
+    packages=find_packages(),
+
+    # Зависимости для приложения
+    # В данном случае мы используем внешнюю библиотеку 'click'
+    install_requires=['click'],
+
+    # Точка входа в приложение
+    # По умолчанию скрипты для запуска устанавливается в '/usr/local/bin' или что-то подобное в других системах
+    # Чтобы создать скрипт запуска в установочной директории запустите './setup.py install --install-scripts .'
+    # после этого скрипт запуска будет создан в каталоге установки
+    # и может быть запущен как './console_example <args>'
+    # Но рекомендуется устанавливать скрипты в отдельной директории './setup.py install --install-scripts ./scripts'
+    # потому что в дополнение к основным скриптам также могут быть установлены скрипты зависимостей,
+    # это не заметно в случае с консольным приложением, но в случае примера приложения gui видно явно
+    entry_points={
+        'console_scripts': [
+            'console_example=cli:cli'
+        ],
+    }
+)
+```
+
+#### Информация про приложение
+
+#### packages
+
+#### install_requires
+
+#### entry_points=
 
 ### Как запускать
 
