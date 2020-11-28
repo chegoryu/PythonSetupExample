@@ -4,9 +4,12 @@ from setuptools import setup, find_packages
 
 
 setup(
+    # App name
+    # This can be any name as long as only contains letters, numbers, '_' and '-'
+    name='gui_example',
+
     # Some information about the app
     # You can write almost anything here
-    name='gui_example',
     version='1.0',
     url='https://github.com/chegoryu/PythonSetupExample',
     license='MIT',
