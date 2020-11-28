@@ -235,7 +235,7 @@ if __name__ == '__main__':
 
 В общем случае точки входа указываются следующим образом.
 
-Пусть в файле `path/to/file.py` находится функции `run1` и `run2`, и мы хотим чтобы при установке создавались скрипты `run_my_app_ver1, `run_my_app_ver2` которые запускают эти функции.
+Пусть в файле `path/to/file.py` находится функции `run1` и `run2`, и мы хотим чтобы при установке создавались скрипты `run_my_app_ver1`, `run_my_app_ver2` которые запускают эти функции.
 
 Также пусть у нас есть модуль `/path/to/module/__init__.py` в котором есть класс `MyApp` с статической функцией `run_main_loop`,
 и мы хотим чтобы при установке создавался скрипт `run_my_app_ver3` который запускает эту фукнцию.
@@ -254,7 +254,80 @@ entry_points={
 
 ### Как запускать
 
-TODO
+По сути запускать очень просто, всего лишь надо выполнить `./setup.py install` и все установится.
+
+К сожалению скрипты для запуска установливаются куда-то вглубь системы, например на `unix` системах они будут установленны куда-то в `/usr/local/bin`.
+
+Чтобы нам было удобно ими пользоваться их хочется установить (по факту создать) где-то рядом с местом откуда мы все устанавливаем,
+для этого надо запустить `./setup.py install --install-scripts .` и все будет создано в той же директории где находится сейчас скрипт установки.
+
+Но этого не рекомендуется делать, ибо скриптов для запуска может быть очень много и они просто засорят текущую директорию, лучше все использовать какую-то отдельную,
+например `scripts`, тогда команда установки будет выглядеть как `./setup.py install --install-scripts ./scripts`.
+
+Также не надо пугаться лишний файлов. Например после установки консольного приложения там будут созданы некоторые дополнительные файлы:
+```
+Что было до:
+.
+├── cli
+│   ├── __init__.py
+│   ├── cli.py
+│   └── helpers
+│       ├── __init__.py
+│       └── helpers.py
+└── setup.py
+
+Что стало после (с учетом установки скриптов в ./scripts):
+.
+├── build
+│   ├── bdist.macosx-10.12-x86_64
+│   └── lib
+│       └── cli
+│           ├── __init__.py
+│           ├── cli.py
+│           └── helpers
+│               ├── __init__.py
+│               └── helpers.py
+├── cli
+│   ├── __init__.py
+│   ├── cli.py
+│   └── helpers
+│       ├── __init__.py
+│       └── helpers.py
+├── console_example.egg-info
+│   ├── PKG-INFO
+│   ├── SOURCES.txt
+│   ├── dependency_links.txt
+│   ├── entry_points.txt
+│   ├── requires.txt
+│   └── top_level.txt
+├── dist
+│   └── console_example-1.0-py3.7.egg
+├── scripts
+│   └── console_example
+└── setup.py
+```
+
+Они создаются ибо `setuptools` все же был создан для распространения библиотек и эти файлы нужны для этого.
+
+После установки консольное приложение можно запустить вот так (с учетом установки в ./scripts):
+
+```
+[~/PythonSetupExample/console_example]$ ./scripts/console_example
+Usage: console_example [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  -h, --help  Show this message and exit.
+
+Commands:
+  sort  Sort numbers.
+  sum   Sum numbers.
+chegoryu@chegoryu-osx:~/Desktop/PythonSetupExample/PythonSetupExample/console_example$ ./scripts/console_example sum 3 1 2
+6
+chegoryu@chegoryu-osx:~/Desktop/PythonSetupExample/PythonSetupExample/console_example$ ./scripts/console_example sort 3 1 2
+1 2 3
+chegoryu@chegoryu-osx:~/Desktop/PythonSetupExample/PythonSetupExample/console_example$ ./scripts/console_example sort 3 1 2 --reverse
+3 2 1
+```
 
 ### Пример с GUI
 
