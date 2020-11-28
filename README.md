@@ -203,7 +203,54 @@ install_requires=['click'],
 
 #### entry_points
 
-TODO
+```python
+entry_points={
+    'console_scripts': [
+        'console_example=cli:cli'
+    ],
+}
+```
+
+Входные точки в наше приложение.
+
+Их может быть несколько, на каждую из них будет создан специальный скрипт запуска.
+Например в примере выше будет создан скрипт запуска который запускает функцию `cli` из папки `cli`.
+
+Его код нам не особо важен, но для общего развития его полезно посмотреть:
+
+```python
+#!/usr/local/bin/python3
+# EASY-INSTALL-ENTRY-SCRIPT: 'console-example==1.0','console_scripts','console_example'
+__requires__ = 'console-example==1.0'
+import re
+import sys
+from pkg_resources import load_entry_point
+
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
+    sys.exit(
+        load_entry_point('console-example==1.0', 'console_scripts', 'console_example')()
+    )
+```
+
+В общем случае точки входа указываются следующим образом.
+
+Пусть в файле `path/to/file.py` находится функции `run1` и `run2`, и мы хотим чтобы при установке создавались скрипты `run_my_app_ver1, `run_my_app_ver2` которые запускают эти функции.
+
+Также пусть у нас есть модуль `/path/to/module/__init__.py` в котором есть класс `MyApp` с статической функцией `run_main_loop`,
+и мы хотим чтобы при установке создавался скрипт `run_my_app_ver3` который запускает эту фукнцию.
+
+Тогда нам надо указать следующие точки входа:
+
+```python
+entry_points={
+    'console_scripts': [
+        'run_my_app_ver1=path.to.file:run1',
+        'run_my_app_ver2=path.to.file:run2',
+        'run_my_app_ver3=path.to.module:MyApp.run_main_loop'
+    ],
+}
+```
 
 ### Как запускать
 
