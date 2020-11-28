@@ -309,7 +309,7 @@ entry_points={
 
 Они создаются ибо `setuptools` все же был создан для распространения библиотек и эти файлы нужны для этого.
 
-После установки консольное приложение можно запустить вот так (с учетом установки в ./scripts):
+После установки консольное приложение можно запустить вот так (с учетом установки в `./scripts`):
 
 ```
 [~/PythonSetupExample/console_example]$ ./scripts/console_example
@@ -321,11 +321,11 @@ Options:
 Commands:
   sort  Sort numbers.
   sum   Sum numbers.
-chegoryu@chegoryu-osx:~/Desktop/PythonSetupExample/PythonSetupExample/console_example$ ./scripts/console_example sum 3 1 2
+[~/PythonSetupExample/console_example]$ ./scripts/console_example sum 3 1 2
 6
-chegoryu@chegoryu-osx:~/Desktop/PythonSetupExample/PythonSetupExample/console_example$ ./scripts/console_example sort 3 1 2
+[~/PythonSetupExample/console_example]$ ./scripts/console_example sort 3 1 2
 1 2 3
-chegoryu@chegoryu-osx:~/Desktop/PythonSetupExample/PythonSetupExample/console_example$ ./scripts/console_example sort 3 1 2 --reverse
+[~/PythonSetupExample/console_example]$ ./scripts/console_example sort 3 1 2 --reverse
 3 2 1
 ```
 
