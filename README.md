@@ -82,7 +82,7 @@ pip install setuptools
 
 Чтобы скачать все примеры себе на компьютер можно либо воспользоваться `git` если он у вас настроен (команда `git clone git@github.com:chegoryu/PythonSetupExample.git`), либо скачать архив с репозиторием:
 
-![image](https://github.com/chegoryu/PythonSetupExample/blob/master/readme_images/how_to_download.png)
+![how_to_download](https://github.com/chegoryu/PythonSetupExample/blob/master/readme_images/how_to_download.png)
 
 ### Как написать
 
@@ -264,6 +264,8 @@ entry_points={
 Но этого не рекомендуется делать, ибо скриптов для запуска может быть очень много и они просто засорят текущую директорию, лучше все использовать какую-то отдельную,
 например `scripts`, тогда команда установки будет выглядеть как `./setup.py install --install-scripts ./scripts`.
 
+Иногда для установки нужны права `superuser`'а, так что придется запускать `sudo ./setup.py install --install-scripts ./scripts`.
+
 Также не надо пугаться лишний файлов. Например после установки консольного приложения там будут созданы некоторые дополнительные файлы:
 ```
 Что было до:
@@ -331,7 +333,56 @@ Commands:
 
 ### Пример с GUI
 
-TODO
+Отличий написания `setup.py` для работы с GUI почти нет.
+
+Если сравнить `setup.py` [для консольного приложения](https://github.com/chegoryu/PythonSetupExample/blob/master/console_example/setup.py) и [для приложения с GUI](https://github.com/chegoryu/PythonSetupExample/blob/master/gui_example/setup.py),
+то можно увидеть что важное отличие только в `entry_points`, там вместо `console_scripts` написано `gui_scripts`:
+
+```python
+entry_points={
+    'gui_scripts': [
+        'gui_example=gui:main'
+    ],
+}
+```
+
+В конкретном примере при установке будет создано много лишний скриптов, все они создаются из-за зависимости от `kivy`:
+```
+[~/PythonSetupExample/gui_example]$ ls scripts
+chardetect            garden.bat            pygmentize            rst2html4.py          rst2latex.py          rst2odt.py            rst2pseudoxml.py      rst2xetex.py          rstpep2html.py
+garden                gui_example           rst2html.py           rst2html5.py          rst2man.py            rst2odt_prepstyles.py rst2s5.py             rst2xml.py
+```
+
+Нас интересует только наш скрипт `gui_example`, при его запуске должно появиться окно с одной кнопкой и какой-то такой лог в консоли:
+```
+[~/PythonSetupExample/gui_example]$ ./scripts/gui_example
+[INFO   ] [Logger      ] Record log in /Users/chegoryu/.kivy/logs/kivy_20-11-28_2.txt
+[INFO   ] [Kivy        ] v2.0.0rc4, git-d74461b, 20201015
+[INFO   ] [Kivy        ] Installed at "/usr/local/lib/python3.7/site-packages/Kivy-2.0.0rc4-py3.7-macosx-10.12-x86_64.egg/kivy/__init__.py"
+[INFO   ] [Python      ] v3.7.0 (default, Jun 29 2018, 20:14:27)
+[Clang 9.0.0 (clang-900.0.39.2)]
+[INFO   ] [Python      ] Interpreter at "/usr/local/opt/python/bin/python3.7"
+[INFO   ] [Factory     ] 186 symbols loaded
+[INFO   ] [Image       ] Providers: img_tex, img_imageio, img_dds, img_sdl2 (img_pil, img_ffpyplayer ignored)
+[INFO   ] [Text        ] Provider: sdl2
+[INFO   ] [Window      ] Provider: sdl2
+[INFO   ] [GL          ] Using the "OpenGL ES 2" graphics system
+[INFO   ] [GL          ] Backend used <sdl2>
+[INFO   ] [GL          ] OpenGL version <b'2.1 ATI-1.51.8'>
+[INFO   ] [GL          ] OpenGL vendor <b'ATI Technologies Inc.'>
+[INFO   ] [GL          ] OpenGL renderer <b'AMD Radeon Pro 555 OpenGL Engine'>
+[INFO   ] [GL          ] OpenGL parsed version: 2, 1
+[INFO   ] [GL          ] Shading version <b'1.20'>
+[INFO   ] [GL          ] Texture max size <16384>
+[INFO   ] [GL          ] Texture max units <16>
+[INFO   ] [Window      ] auto add sdl2 input provider
+[INFO   ] [Window      ] virtual keyboard not allowed, single mode, not docked
+[INFO   ] [Base        ] Start application main loop
+[INFO   ] [GL          ] NPOT texture support is available
+[INFO   ] [Base        ] Leaving application in progress...
+```
+
+![gui_example](https://github.com/chegoryu/PythonSetupExample/blob/master/readme_images/gui_example.png)
 
 ### Особенности работы с Windows
 
