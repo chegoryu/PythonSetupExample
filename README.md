@@ -80,6 +80,10 @@ pip install setuptools
 
 Для запуска скриптов и приложений ниже показаны примеры команд для `unix` систем, для особенностей работы с `windows` есть отдельный раздел.
 
+Чтобы скачать все примеры себе на компьютер можно либо воспользоваться `git` если он у вас настроен (команда `git clone git@github.com:chegoryu/PythonSetupExample.git`), либо скачать архив с репозиторием:
+
+![image](https://github.com/chegoryu/PythonSetupExample/blob/master/readme_images/how_to_download.png)
+
 ### Как написать
 
 TODO
