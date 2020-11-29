@@ -402,7 +402,7 @@ garden                gui_example           rst2html.py           rst2html5.py  
 
 ![windows_run_cmd](https://github.com/chegoryu/PythonSetupExample/blob/master/readme_images/windows_run_cmd.png)
 
-Далее надо перейти в директорию с нашим проектом, пусть это будет `C:\Programs\tmp\PythonSetupExample\console_example`, 
+Далее надо перейти в директорию с нашим проектом, пусть это будет `C:\Programs\tmp\PythonSetupExample\console_example`,
 тогда надо выполнить `cd C:\Programs\tmp\PythonSetupExample\console_example`
 
 ```
