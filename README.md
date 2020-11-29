@@ -678,7 +678,7 @@ C:\Programs\tmp\PythonSetupExample\gui_example\scripts>python gui_example-script
 
 ![windows_gui_example](https://github.com/chegoryu/PythonSetupExample/blob/master/readme_images/windows_gui_example.png)
 
-Также можно запустить при помощи `.exe` файла из проводника:
+Также можно запустить при помощи `.exe` или `.pyw` файла из проводника (возможно при выборе `.pyw` нужно будет указать что надо запустить именно при помощи `python`, в моем случае по дефолту открылась `IDLE`, пришлось изменять способ запуска):
 
 ![windows_file_explorer_gui_example](https://github.com/chegoryu/PythonSetupExample/blob/master/readme_images/windows_file_explorer_gui_example.png)
 
