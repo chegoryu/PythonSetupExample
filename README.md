@@ -10,7 +10,7 @@
         4. [entry_points](#entry_points)
     2. [Как запускать](#как-запускать)
     3. [Пример с GUI](#пример-с-gui)
-    4. [Особенности работы с Windows](#особенности-работы-с-windows)
+    4. [Особенности работы с windows](#особенности-работы-с-windows)
 4. [Как правильно распространять приложения](#как-правильно-распространять-приложения)
 
 ## Вступление
@@ -396,9 +396,86 @@ garden                gui_example           rst2html.py           rst2html5.py  
 
 ![gui_example](https://github.com/chegoryu/PythonSetupExample/blob/master/readme_images/gui_example.png)
 
-### Особенности работы с Windows
+### Особенности работы с windows
 
-TODO
+Чтобы запустить `setup.py` под `windows` с правильными параметрами надо открыть консоль, для этого надо нажать `win + r` и в открывшемся окне набрать `cmd` и нажать `enter`:
+
+![windows_run_cmd](https://github.com/chegoryu/PythonSetupExample/blob/master/readme_images/windows_run_cmd.png)
+
+Далее надо перейти в директорию с нашим проектом, пусть это будет `C:\Programs\tmp\PythonSetupExample\console_example`, 
+тогда надо выполнить `cd C:\Programs\tmp\PythonSetupExample\console_example`
+
+```
+C:\>cd C:\Programs\tmp\PythonSetupExample\console_example
+
+C:\Programs\tmp\PythonSetupExample\console_example>
+```
+
+Далее нам надо запустить скрипт установки, в отличии от `unix` систем в `windows` придется явно указать чем запускать наш скрипт, для этого надо выполнить `python setup.py install --install-scripts ./scripts` (возможно у вас буду какие-то расширения которые позволят это выполнить без явного указания `python`, но тут показан метод который работает без расширений поверх стандартной инсталции `python`).
+
+```
+C:\Programs\tmp\PythonSetupExample\console_example>python setup.py install --install-scripts ./scripts
+```
+
+<details>
+  <summary>Полный вывод</summary>
+```
+C:\Programs\tmp\PythonSetupExample\console_example>python setup.py install --install-scripts ./scrip
+running install
+running bdist_egg
+running egg_info
+writing console_example.egg-info\PKG-INFO
+writing dependency_links to console_example.egg-info\dependency_links.txt
+writing entry points to console_example.egg-info\entry_points.txt
+writing requirements to console_example.egg-info\requires.txt
+writing top-level names to console_example.egg-info\top_level.txt
+reading manifest file 'console_example.egg-info\SOURCES.txt'
+writing manifest file 'console_example.egg-info\SOURCES.txt'
+installing library code to build\bdist.win32\egg
+running install_lib
+running build_py
+creating build\bdist.win32\egg
+creating build\bdist.win32\egg\cli
+copying build\lib\cli\cli.py -> build\bdist.win32\egg\cli
+creating build\bdist.win32\egg\cli\helpers
+copying build\lib\cli\helpers\helpers.py -> build\bdist.win32\egg\cli\helpers
+copying build\lib\cli\helpers\__init__.py -> build\bdist.win32\egg\cli\helpers
+copying build\lib\cli\__init__.py -> build\bdist.win32\egg\cli
+byte-compiling build\bdist.win32\egg\cli\cli.py to cli.cpython-38.pyc
+byte-compiling build\bdist.win32\egg\cli\helpers\helpers.py to helpers.cpython-38.pyc
+byte-compiling build\bdist.win32\egg\cli\helpers\__init__.py to __init__.cpython-38.pyc
+byte-compiling build\bdist.win32\egg\cli\__init__.py to __init__.cpython-38.pyc
+creating build\bdist.win32\egg\EGG-INFO
+copying console_example.egg-info\PKG-INFO -> build\bdist.win32\egg\EGG-INFO
+copying console_example.egg-info\SOURCES.txt -> build\bdist.win32\egg\EGG-INFO
+copying console_example.egg-info\dependency_links.txt -> build\bdist.win32\egg\EGG-INFO
+copying console_example.egg-info\entry_points.txt -> build\bdist.win32\egg\EGG-INFO
+copying console_example.egg-info\requires.txt -> build\bdist.win32\egg\EGG-INFO
+copying console_example.egg-info\top_level.txt -> build\bdist.win32\egg\EGG-INFO
+zip_safe flag not set; analyzing archive contents...
+creating 'dist\console_example-1.0-py3.8.egg' and adding 'build\bdist.win32\egg' to it
+removing 'build\bdist.win32\egg' (and everything under it)
+Processing console_example-1.0-py3.8.egg
+Removing c:\users\admin\appdata\local\programs\python\python38-32\lib\site-packages\console_example-1.0-py3.8.egg
+Copying console_example-1.0-py3.8.egg to c:\users\admin\appdata\local\programs\python\python38-32\lib\site-packages
+console-example 1.0 is already the active version in easy-install.pth
+Installing console_example-script.py script to scripts
+Installing console_example.exe script to scripts
+Installing console_example.exe.manifest script to scripts
+
+Installed c:\users\admin\appdata\local\programs\python\python38-32\lib\site-packages\console_example-1.0-py3.8.egg
+Processing dependencies for console-example==1.0
+Searching for click==8.0.0a1
+Best match: click 8.0.0a1
+Processing click-8.0.0a1-py3.8.egg
+click 8.0.0a1 is already the active version in easy-install.pth
+
+Using c:\users\admin\appdata\local\programs\python\python38-32\lib\site-packages\click-8.0.0a1-py3.8.egg
+Finished processing dependencies for console-example==1.0
+```
+</details>
+
+
 
 ## Как правильно распространять приложения
 
