@@ -587,7 +587,100 @@ C:\Programs\tmp\PythonSetupExample\console_example\scripts>python console_exampl
 3 2 1
 ```
 
+Все эти скрипты можно попытаться запустить из проводника, но, к сожалению, все что вы увидете будет быстро мелькнувшая консоль.
 
+![windows_file_explorer_console_example](https://github.com/chegoryu/PythonSetupExample/blob/master/readme_images/windows_file_explorer_console_example.png)
+
+Но, к счачтью, совсем по другому обстоят дела с GUI приложением: там при установке появляются следующие файлы:
+
+```
+C:\Programs\tmp\PythonSetupExample\gui_example\scripts>dir
+ Том в устройстве C имеет метку Windows10
+ Серийный номер тома: DCBB-BB21
+
+ Содержимое папки C:\Programs\tmp\PythonSetupExample\gui_example\scripts
+
+29.11.2020  20:29    <DIR>          .
+29.11.2020  20:29    <DIR>          ..
+29.11.2020  20:29               451 chardetect-script.py
+29.11.2020  20:29            65 536 chardetect.exe
+29.11.2020  20:29               645 chardetect.exe.manifest
+29.11.2020  20:29               230 garden
+29.11.2020  20:29                25 garden.bat
+29.11.2020  20:29               452 gui_example-script.pyw
+29.11.2020  20:29            65 536 gui_example.exe
+29.11.2020  20:29               646 gui_example.exe.manifest
+29.11.2020  20:29               454 pygmentize-script.py
+29.11.2020  20:29            65 536 pygmentize.exe
+29.11.2020  20:29               645 pygmentize.exe.manifest
+29.11.2020  20:29               244 pywin32_postinstall.py
+29.11.2020  20:29               236 pywin32_testall.py
+29.11.2020  20:29               228 rst2html.py
+29.11.2020  20:29               230 rst2html4.py
+29.11.2020  20:29               230 rst2html5.py
+29.11.2020  20:29               230 rst2latex.py
+29.11.2020  20:29               226 rst2man.py
+29.11.2020  20:29               226 rst2odt.py
+29.11.2020  20:29               248 rst2odt_prepstyles.py
+29.11.2020  20:29               238 rst2pseudoxml.py
+29.11.2020  20:29               224 rst2s5.py
+29.11.2020  20:29               230 rst2xetex.py
+29.11.2020  20:29               226 rst2xml.py
+29.11.2020  20:29               234 rstpep2html.py
+              25 файлов        203 406 байт
+               2 папок  727 629 459 456 байт свободно
+
+```
+
+Если не учитывать файлы который появились из-за зависимости от `kivy`, то нас интересуют:
+
+```
+29.11.2020  20:29               452 gui_example-script.pyw
+29.11.2020  20:29            65 536 gui_example.exe
+29.11.2020  20:29               646 gui_example.exe.manifest
+```
+
+Как можно заметить основное отличие это `.pyw` вместо `.py`. Это специально расширение файла которое означает запуск `python` скрипта без открытия консоли.
+
+При запуске из консоли в ней будет лог:
+
+```
+C:\Programs\tmp\PythonSetupExample\gui_example\scripts>python gui_example-script.pyw
+[INFO   ] [Logger      ] Record log in C:\Users\admin\.kivy\logs\kivy_20-11-29_3.txt
+[INFO   ] [deps        ] Successfully imported "kivy_deps.gstreamer" 0.3.1
+[INFO   ] [deps        ] Successfully imported "kivy_deps.sdl2" 0.3.1
+[INFO   ] [deps        ] Successfully imported "kivy_deps.glew" 0.3.0
+[INFO   ] [deps        ] Successfully imported "kivy_deps.angle" 0.3.0
+[INFO   ] [Kivy        ] v2.0.0rc4, git-d74461b, 20201015
+[INFO   ] [Kivy        ] Installed at "c:\users\admin\appdata\local\programs\python\python37-32\lib\site-packages\kivy-2.0.0rc4-py3.7-win32.egg\kivy\__init__.py"
+[INFO   ] [Python      ] v3.7.9 (tags/v3.7.9:13c94747c7, Aug 17 2020, 18:01:55) [MSC v.1900 32 bit (Intel)]
+[INFO   ] [Python      ] Interpreter at "C:\Users\admin\AppData\Local\Programs\Python\Python37-32\python.exe"
+[INFO   ] [Factory     ] 186 symbols loaded
+[INFO   ] [Image       ] Providers: img_tex, img_dds, img_sdl2 (img_pil, img_ffpyplayer ignored)
+[INFO   ] [Text        ] Provider: sdl2
+[INFO   ] [Window      ] Provider: sdl2
+[INFO   ] [GL          ] Using the "OpenGL" graphics system
+[INFO   ] [GL          ] GLEW initialization succeeded
+[INFO   ] [GL          ] Backend used <glew>
+[INFO   ] [GL          ] OpenGL version <b'4.6.0 NVIDIA 452.06'>
+[INFO   ] [GL          ] OpenGL vendor <b'NVIDIA Corporation'>
+[INFO   ] [GL          ] OpenGL renderer <b'GeForce RTX 2070 SUPER/PCIe/SSE2'>
+[INFO   ] [GL          ] OpenGL parsed version: 4, 6
+[INFO   ] [GL          ] Shading version <b'4.60 NVIDIA'>
+[INFO   ] [GL          ] Texture max size <32768>
+[INFO   ] [GL          ] Texture max units <32>
+[INFO   ] [Window      ] auto add sdl2 input provider
+[INFO   ] [Window      ] virtual keyboard not allowed, single mode, not docked
+[INFO   ] [Base        ] Start application main loop
+[INFO   ] [GL          ] NPOT texture support is available
+[INFO   ] [Base        ] Leaving application in progress...
+```
+
+![windows_gui_example](https://github.com/chegoryu/PythonSetupExample/blob/master/readme_images/windows_gui_example.png)
+
+Также можно запустить при помощи `.exe` файла из проводника:
+
+![windows_file_explorer_gui_example](https://github.com/chegoryu/PythonSetupExample/blob/master/readme_images/windows_file_explorer_gui_example.png)
 
 ## Как правильно распространять приложения
 
