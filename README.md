@@ -419,6 +419,7 @@ C:\Programs\tmp\PythonSetupExample\console_example>python setup.py install --ins
 
 <details>
   <summary>Полный вывод</summary>
+
 ```
 C:\Programs\tmp\PythonSetupExample\console_example>python setup.py install --install-scripts ./scrip
 running install
@@ -473,6 +474,7 @@ click 8.0.0a1 is already the active version in easy-install.pth
 Using c:\users\admin\appdata\local\programs\python\python38-32\lib\site-packages\click-8.0.0a1-py3.8.egg
 Finished processing dependencies for console-example==1.0
 ```
+
 </details>
 
 
