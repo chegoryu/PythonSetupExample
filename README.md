@@ -477,6 +477,116 @@ Finished processing dependencies for console-example==1.0
 
 </details>
 
+После этого в директорию scripts были установленны наши скрипты для запуска:
+
+```
+C:\Programs\tmp\PythonSetupExample\console_example>cd scripts
+
+C:\Programs\tmp\PythonSetupExample\console_example\scripts>dir
+ Том в устройстве C имеет метку Windows10
+ Серийный номер тома: DCBB-BB21
+
+ Содержимое папки C:\Programs\tmp\PythonSetupExample\console_example\scripts
+
+29.11.2020  19:41    <DIR>          .
+29.11.2020  19:41    <DIR>          ..
+29.11.2020  19:41               479 console_example-script.py
+29.11.2020  19:41            65 536 console_example.exe
+29.11.2020  19:41               650 console_example.exe.manifest
+               3 файлов         66 665 байт
+               2 папок  728 631 013 376 байт свободно
+
+```
+
+Как видно в отличии от `unix` было создано три файла.
+
+Файл `.manifest`, который содержит какую-то информацию о скрипте, в целом нам это файл не интересен:
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+    <assemblyIdentity version="1.0.0.0"
+                      processorArchitecture="X86"
+                      name="console_example"
+                      type="win32"/>
+    <!-- Identify the application security requirements. -->
+    <trustInfo xmlns="urn:schemas-microsoft-com:asm.v3">
+        <security>
+            <requestedPrivileges>
+                <requestedExecutionLevel level="asInvoker" uiAccess="false"/>
+            </requestedPrivileges>
+        </security>
+    </trustInfo>
+</assembly>
+```
+
+Файл `.py`, который содержит знакомый нам код для запуска:
+
+```python
+#!C:\Users\admin\AppData\Local\Programs\Python\Python38-32\python.exe
+# EASY-INSTALL-ENTRY-SCRIPT: 'console-example==1.0','console_scripts','console_example'
+__requires__ = 'console-example==1.0'
+import re
+import sys
+from pkg_resources import load_entry_point
+
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
+    sys.exit(
+        load_entry_point('console-example==1.0', 'console_scripts', 'console_example')()
+    )
+```
+
+И `.exe` файл для запуска.
+
+Наше приложение можно запустить двумя способами:
+
+1. При помощи `.exe` файла:
+
+```
+C:\Programs\tmp\PythonSetupExample\console_example\scripts>console_example.exe
+Usage: console_example [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  -h, --help  Show this message and exit.
+
+Commands:
+  sort  Sort numbers.
+  sum   Sum numbers.
+
+C:\Programs\tmp\PythonSetupExample\console_example\scripts>console_example.exe sum 3 1 2
+6
+
+C:\Programs\tmp\PythonSetupExample\console_example\scripts>console_example.exe sort 3 1 2
+1 2 3
+
+C:\Programs\tmp\PythonSetupExample\console_example\scripts>console_example.exe sort 3 1 2 --reverse
+3 2 1
+```
+
+2. При помощи `.py` файла с явным указанием `python` для запуска:
+
+```
+C:\Programs\tmp\PythonSetupExample\console_example\scripts>python console_example-script.py
+Usage: console_example [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  -h, --help  Show this message and exit.
+
+Commands:
+  sort  Sort numbers.
+  sum   Sum numbers.
+
+C:\Programs\tmp\PythonSetupExample\console_example\scripts>python console_example-script.py sum 3 1 2
+6
+
+C:\Programs\tmp\PythonSetupExample\console_example\scripts>python console_example-script.py sort 3 1 2
+1 2 3
+
+C:\Programs\tmp\PythonSetupExample\console_example\scripts>python console_example-script.py sort 3 1 2 --reverse
+3 2 1
+```
+
 
 
 ## Как правильно распространять приложения
